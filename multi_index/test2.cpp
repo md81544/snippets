@@ -49,26 +49,26 @@ bmi::multi_index_container<
 
 int main()
 {
-    g_people.insert( {  1, "Helen"    } ); 
-    g_people.insert( {  2, "Jessica"  } ); 
-    g_people.insert( {  3, "Rachael"  } ); 
-    g_people.insert( {  4, "Vicki"    } ); 
-    g_people.insert( {  5, "Jenny"    } ); 
+    g_people.insert( {  1, "Fred"     } ); 
+    g_people.insert( {  2, "Betty"    } ); 
+    g_people.insert( {  3, "Stephen"  } ); 
+    g_people.insert( {  4, "Arthur"   } ); 
+    g_people.insert( {  5, "James"    } ); 
     g_people.insert( {  6, "Angie"    } ); 
-    g_people.insert( {  7, "Yasmin"   } ); 
+    g_people.insert( {  7, "Peter"    } ); 
     g_people.insert( {  8, "Sarah"    } ); 
-    g_people.insert( {  9, "Caroline" } ); 
+    g_people.insert( {  9, "Richard"  } ); 
     g_people.insert( { 10, "Mary"     } ); 
-    g_people.insert( { 11, "Lisa"     } ); 
+    g_people.insert( { 11, "Robert"   } ); 
     g_people.insert( { 12, "Jane"     } ); 
-    g_people.insert( { 13, "Louise"   } ); 
-    g_people.insert( { 14, "Gaelle"   } ); 
+    g_people.insert( { 13, "Jack"     } ); 
+    g_people.insert( { 14, "Chloe"    } ); 
     g_people.insert( { 15, "Michelle" } ); 
-    g_people.insert( { 16, "Simone"   } ); 
+    g_people.insert( { 16, "Simon"    } ); 
     g_people.insert( { 17, "Fiona"    } ); 
-    g_people.insert( { 18, "Eyrun"    } ); 
+    g_people.insert( { 18, "Herbert"  } ); 
     g_people.insert( { 19, "Rachel"   } ); 
-    g_people.insert( { 20, "Shannon"  } ); 
+    g_people.insert( { 20, "Daniel"   } ); 
 
 
     auto& idx = g_people.get<IdxName>();

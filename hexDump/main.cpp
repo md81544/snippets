@@ -1,3 +1,4 @@
+#include <cstdint>
 #include <fstream>
 #include <iomanip>
 #include <iostream>
@@ -5,14 +6,12 @@
 #include <vector>
 #include <stdexcept>
 
-// Obviously doing a hex dump in Linux is a piece
-// of cake but there's no *native* way to do it
-// simply in Windows so this is a quick & dirty
-// program to help QA
+// Obviously doing a hex dump in Linux is a piece of cake but
+// there's no *native* way to do it simply in Windows so
+// this is a quick & dirty solution. Does not do paging or
+// display of characters.
 
-using BYTE = unsigned char;
-
-std::vector<unsigned char> ReadFile( const std::string& filename )
+std::vector<uint8_t> ReadFile( const std::string& filename )
 {
     std::ifstream in( filename, std::ios::in | std::ios::binary );
     if ( !in )
@@ -22,7 +21,7 @@ std::vector<unsigned char> ReadFile( const std::string& filename )
     }
     in.seekg( 0, std::ios_base::end );
     std::streampos fileSize = in.tellg();
-    std::vector<unsigned char> vec( static_cast<size_t>( fileSize ) );
+    std::vector<uint8_t> vec( static_cast<size_t>( fileSize ) );
     in.seekg( 0, std::ios_base::beg );
     in.read( reinterpret_cast<char*>( vec.data() ), fileSize );
     return vec;

@@ -7,6 +7,7 @@
 #include "boost/property_tree/json_parser.hpp"
 #pragma warning( pop )
 
+#include <cstdint>
 #include <string>
 #include <vector>
 
@@ -16,9 +17,8 @@ namespace xyz
 class JsonParser
 {
 public:
-	// ctor takes vec of chars (see ReadFile elsewhere)
     explicit JsonParser(
-        std::vector<unsigned char> vecJson
+        std::vector<uint8_t> vecJson
     );
 
     template<typename T>

@@ -3,7 +3,7 @@
 namespace xyz
 {
 
-JsonParser::JsonParser( std::vector<unsigned char> vecJson )
+JsonParser::JsonParser( std::vector<uint8_t> vecJson )
     : m_validState( false )
 {
     try
@@ -19,7 +19,7 @@ JsonParser::JsonParser( std::vector<unsigned char> vecJson )
     }
     catch ( ... )
     {
-        // TODO log this?  "Unknown exception encountered";
+        // TODO log this
     }
 }
 
