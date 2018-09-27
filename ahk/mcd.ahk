@@ -9,7 +9,6 @@ SetNumLockState,  AlwaysOn
 stop = 1
 x = 0
 y = 0
-Menu, Tray, Icon, F:\ahk\green.ico
 
 Pause(times)
 {
