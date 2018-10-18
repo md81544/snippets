@@ -1,2 +1,2 @@
 hexDump: main.cpp
-	g++ -std=c++11 -o hexDump main.cpp
+	g++ -std=c++14 -Wall -Wextra -Werror -Wpedantic -o hexDump main.cpp
