@@ -1,5 +1,5 @@
 void WriteFile(
-    const std::vector<BYTE>& vec,
+    const std::vector<uint8_t>& vec,
     const std::string& filename
     )
 {
@@ -12,7 +12,7 @@ void WriteFile(
     std::copy(
         vec.begin(),
         vec.end(),
-        std::ostream_iterator<BYTE>( out )
+        std::ostream_iterator<uint8_t>( out )
         );
     out.close();
 }
