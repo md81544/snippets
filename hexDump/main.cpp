@@ -2,14 +2,72 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <stdexcept>
 #include <string>
 #include <vector>
-#include <stdexcept>
 
 // Obviously doing a hex dump in Linux is a piece of cake but
 // there's no *native* way to do it simply in Windows so
-// this is a quick & dirty solution. Does not do paging or
-// display of characters.
+// this is a quick & dirty solution.
+
+void hexDump( const std::vector<uint8_t>& buf )
+{
+    unsigned char hexDigits[] = "0123456789abcdef";
+
+    long lengthRemaining = buf.size();
+    int index = 0;
+
+    while ( lengthRemaining > 0 )
+    {
+        printf( "%8.8x  ", index );
+        // print the hex
+        for ( int i = 0; i < 16; ++i )
+        {
+            if ( i >= lengthRemaining )
+            {
+                printf( "   " );
+                if ( i == 7 )
+                {
+                    printf( " " );
+                }
+            }
+            else
+            {
+                printf( "%c", hexDigits[ buf[ index + i ] >> 4 ] );
+                printf( "%c", hexDigits[ buf[ index + i ] & 0x0f ] );
+                if ( i == 7 )
+                {
+                    printf( " " );
+                }
+                printf( " " );
+            }
+        }
+        printf( "  |" );
+        // print the characters
+        for ( int i = 0; i < 16; ++i )
+        {
+            if ( i >= lengthRemaining )
+            {
+                printf( " " );
+            }
+            else
+            {
+                uint8_t c = buf[ index + i ];
+                if ( c < 32 || c > 126 )
+                {
+                    printf( "." );
+                }
+                else
+                {
+                    printf( "%c", c );
+                }
+            }
+        }
+        printf( "|\n" );
+        index += 16;
+        lengthRemaining -= 16;
+    }
+}
 
 std::vector<uint8_t> ReadFile( const std::string& filename )
 {
@@ -38,18 +96,7 @@ int main( int argc, char* argv[] )
     try
     {
         auto vec = ReadFile( fileName );
-        unsigned int count = 0;
-        for ( auto it = vec.begin(); it != vec.end(); ++it )
-        {
-            std::cout << std::hex << std::setw( 2 ) << std::setfill( '0' )
-                      << std::uppercase
-                      << static_cast<unsigned int>( *it ) << " ";
-            if ( ++count == 16 )
-            {
-                std::cout << "\n";
-                count = 0;
-            }
-        }
+        hexDump( vec );
     }
     catch ( const std::exception& e )
     {
@@ -59,4 +106,3 @@ int main( int argc, char* argv[] )
 
     return 0;
 }
-
