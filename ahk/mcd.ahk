@@ -34,10 +34,7 @@ Loop
         if ( A_TimeIdlePhysical > 10000 )
         {
             MouseMove, x, y, 100, R
-        }
-        Pause(1)
-        if ( A_TimeIdlePhysical > 10000 )
-        {
+            Pause(1)
             MouseMove -x, -y, 100, R
         }
     }
